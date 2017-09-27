@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Vapeshop extends Component {
-  constructor() {
-    super();
-    console.log("HELLO");
+  componentWillMount() {
+    console.log(this.props.match.params.id);
   }
 
   render() {

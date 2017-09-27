@@ -7,7 +7,7 @@ const DEFAULT_STATE = {
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
     case 'OPEN_AUTHENTICATION_MODAL': {
-      console.log('CALL THE ACTION');
+      console.log('IN OPEN AUTH MODAL REDUCER');
       return {
         ...state,
         isOpen: true

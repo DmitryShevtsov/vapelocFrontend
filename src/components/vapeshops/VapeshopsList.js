@@ -3,16 +3,15 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class VapeshopsList extends Component {
-  openModal = () => {
-    this.props.dispatch({type: 'OPEN_AUTHENTICATION_MODAL'});
-  };
+  componentWillMount() {
+    this.props.dispatch({ type: 'VAPESHOPS_GET_ALL' });
+  }
 
   render() {
     return (<div>
       Hi,Jack!
       <br/>
       <Link to="/ttt"> To ttt </Link>
-      <button onClick={this.openModal}>Open modal</button>
     </div>
     );
   }

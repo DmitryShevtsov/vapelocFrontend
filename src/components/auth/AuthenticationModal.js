@@ -1,21 +1,27 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
-import {Container, Row, Col} from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { closeAuthenticationModal, openAuthenticationModal } from '../../actions/modal_actions';
 
 class AuthenticationModal extends Component {
   componentWillMount() {
     this.dispatch = this.props.dispatch;
   }
 
+  open = () => {
+    this.dispatch(openAuthenticationModal());
+  }
+
   close = () => {
-    this.dispatch({type: 'CLOSE_AUTHENTICATION_MODAL'});
+    this.dispatch(closeAuthenticationModal());
   };
 
   render() {
     return (
       <div>
+        <button onClick={this.open}> Open Dialog </button>
         <Modal
           isOpen={this.props.state.isOpen}
           aria={{

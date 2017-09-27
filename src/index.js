@@ -9,6 +9,7 @@ import {Provider} from 'react-redux';
 import {Router, Route, Switch} from 'react-router';
 import {syncHistoryWithStore, routerReducer, routerMiddleware, ConnectedRouter} from 'react-router-redux';
 import authentication_modal from "./reducers/authentication_modal";
+import vapeshops from './reducers/vapeshops';
 import createHistory from 'history/createBrowserHistory';
 import Vapeshop from './components/vapeshops/Vapeshop';
 
@@ -17,7 +18,8 @@ const middleware = routerMiddleware(history);
 
 const store = createStore(
   combineReducers({
-    authentication_modal: authentication_modal,
+    authentication_modal,
+    vapeshops,
     routing: routerReducer
   }),
   applyMiddleware(middleware)
@@ -28,7 +30,7 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <App>
         <Switch>
-          <Route path="/ttt" component={Vapeshop} />
+          <Route path="/vapeshops/:id" component={Vapeshop} />
           <Route path="/" component={VapeshopsList} />
         </Switch>
       </App>
