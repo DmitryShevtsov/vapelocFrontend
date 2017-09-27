@@ -7,9 +7,10 @@ import VapeshopsList from './components/vapeshops/VapeshopsList';
 import {createStore, combineReducers, applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
 import {Router, Route, Switch} from 'react-router';
-import {syncHistoryWithStore, routerReducer, routerMiddleware} from 'react-router-redux';
+import {syncHistoryWithStore, routerReducer, routerMiddleware, ConnectedRouter} from 'react-router-redux';
 import authentication_modal from "./reducers/authentication_modal";
 import createHistory from 'history/createBrowserHistory';
+import Vapeshop from './components/vapeshops/Vapeshop';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
@@ -24,14 +25,14 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <ConnectedRouter history={history}>
       <App>
         <Switch>
-         <Route path="/" component={VapeshopsList} />
-          <Route path="/ttt" component={VapeshopsList} />
+          <Route path="/ttt" component={Vapeshop} />
+          <Route path="/" component={VapeshopsList} />
         </Switch>
       </App>
-    </Router>
+    </ConnectedRouter>
   </Provider>
   , document.getElementById('root'));
 registerServiceWorker();
