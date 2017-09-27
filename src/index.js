@@ -12,7 +12,7 @@ import authentication_modal from "./reducers/authentication_modal";
 import vapeshops from './reducers/vapeshops';
 import createHistory from 'history/createBrowserHistory';
 import Vapeshop from './components/vapeshops/Vapeshop';
-
+import NotFound from './components/errors/NotFound'
 const history = createHistory();
 const middleware = routerMiddleware(history);
 
@@ -30,8 +30,10 @@ ReactDOM.render(
     <ConnectedRouter history={history}>
       <App>
         <Switch>
+          <Route exact path="/" component={VapeshopsList} />
+          <Route exact path="/vapeshops" component={VapeshopsList} />
           <Route path="/vapeshops/:id" component={Vapeshop} />
-          <Route path="/" component={VapeshopsList} />
+          <Route component={NotFound} />
         </Switch>
       </App>
     </ConnectedRouter>
