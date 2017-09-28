@@ -17,6 +17,19 @@
     margin-bottom: 25px;
 }
 
+.Header-menu {
+    width: 100%;
+}
+
 .Header-menu ul li {
     display: inline;
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+body {
+    width: 100%;
 }

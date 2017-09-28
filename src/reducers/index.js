@@ -4,5 +4,5 @@ import authentication_modal from './authentication_modal';
 
 export default combineReducers({
   routing: routerReducer,
-  authentication_modal
+  authentication_modal,
 });

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 
 class VapeshopListElement extends Component {
   render() {
-    retrun(
+    console.log("ELEMENT");
+    return(
       <div>
+        Vapeshops
       </div>
     );
   }

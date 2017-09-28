@@ -1,22 +1,28 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import VapeshopListElement from "./VapeshopListElement";
 
 class VapeshopsList extends Component {
+  getAllVapeshopElements() {
+    return this.props.state.map((vapeshop) => {
+      return <VapeshopListElement/>
+    });
+  }
+
   componentWillMount() {
-    this.props.dispatch({ type: 'VAPESHOPS_GET_ALL' });
+    this.props.dispatch({type: 'VAPESHOPS_GET_ALL'});
   }
 
   render() {
-    return (<div>
-      Hi,Jack!
-      <br/>
-      <Link to="/ttt"> To ttt </Link>
-    </div>
+    return (
+      <div>
+        Hello
+        {this.getAllVapeshopElements()}
+      </div>
     );
   }
 }
 
 export default connect((state) => {
-  return { state: state }
+  return {state: state.vapeshops}
 })(VapeshopsList);

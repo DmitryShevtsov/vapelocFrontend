@@ -1,7 +1,9 @@
 const DEFAULT_STATE = {
   isOpen: false,
   phone: null,
-  password: null
+  password: null,
+  username: null,
+  isAuthModal: true
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -15,9 +17,24 @@ export default (state = DEFAULT_STATE, action) => {
     case 'CLOSE_AUTHENTICATION_MODAL': {
       return {
         ...state,
-        isOpen: false
+        isOpen: false,
+        isAuthModal: true
       }
     }
+    case 'SHOW_REGISTRATION_MODAL' : {
+      return {
+        ...state,
+        isAuthModal: false
+      }
+    }
+
+    case 'SHOW_AUTHENTICATION_MODAL' : {
+      return {
+        ...state,
+        isAuthModal: true
+      }
+    }
+
     default:
       return state;
   }
