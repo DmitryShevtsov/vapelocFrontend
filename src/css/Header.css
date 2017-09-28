@@ -1,0 +1,22 @@
+.logo-image {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+}
+
+.Header-spaces {
+    margin-top: 11px;
+    margin-bottom: 11px;
+    height: 150px;
+}
+
+.Header-search-field {
+    display: block;
+    position: relative;
+    top: 20%;
+    margin-bottom: 25px;
+}
+
+.Header-menu ul li {
+    display: inline;
+}
