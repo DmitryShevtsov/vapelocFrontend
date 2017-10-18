@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import { Row, Col, Container } from 'react-grid-system';
 import { connect } from 'react-redux';
-import { showRegistrationModal} from "../../actions/modal_actions";
+import { showRegistrationModal } from "../../actions/modal_actions";
 
 class Authentication extends Component {
   registrationForm = () => {
     this.props.dispatch(showRegistrationModal());
   };
+
   render() {
     return(
       <Container>
@@ -16,7 +17,6 @@ class Authentication extends Component {
         <button onClick={this.close}>Submit</button>
         <button onClick={this.registrationForm}> Register </button>
       </Container>
-
     );
   }
 }

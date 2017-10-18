@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import storeConfig from './store/store_config';
+import storeConfig from './store/storeConfig';
 import { ConnectedRouter } from 'react-router-redux';
 import RoutesList from './components/RoutesList';
 
@@ -12,9 +12,9 @@ const store = storeConfig();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <RoutesList />
-    </ConnectedRouter>
+  <ConnectedRouter history={history}>
+  <RoutesList />
+  </ConnectedRouter>
   </Provider>
   , document.getElementById('root'));
-registerServiceWorker();
+  registerServiceWorker();
