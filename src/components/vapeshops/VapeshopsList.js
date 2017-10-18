@@ -5,12 +5,14 @@ import {getVapeshops} from "../../reducers/vapeshops";
 
 class VapeshopsList extends Component {
   getAllVapeshopElements() {
+    console.log(this.props.state);
     return this.props.state.map((vapeshop) => {
-      return <VapeshopListElement/>
+      return <VapeshopListElement key={vapeshop.id} name={vapeshop.name}/>
     });
   }
 
   componentWillMount() {
+    console.log(this.props.getVapeshops);
   }
 
   render() {

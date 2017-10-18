@@ -11,9 +11,8 @@ import thunk from 'redux-thunk';
 const history = createHistory();
 
 const middleware = routerMiddleware(history);
-//
-export default function storeConfig() {
 
+export default function storeConfig() {
   return createStore(combineReducers({
       authentication_modal,
       vapeshops,
