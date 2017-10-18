@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import { Row, Container } from 'react-grid-system';
 import { connect } from 'react-redux';
+import { showAuthenticationModal} from "../../actions/modal_actions";
 
 class Registration extends Component {
   authForm = () => {
-    this.props.dispatch({type:'SHOW_AUTHENTICATION_MODAL'});
+    this.props.dispatch(showAuthenticationModal());
   };
 
   render() {

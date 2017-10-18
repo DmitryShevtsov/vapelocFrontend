@@ -1,4 +1,7 @@
-import {OPEN_AUTHENTICATION_MODAL, CLOSE_AUTHENTICATION_MODAL} from './types';
+import {
+  OPEN_AUTHENTICATION_MODAL, CLOSE_AUTHENTICATION_MODAL,
+  SHOW_AUTHENTICATION_MODAL, SHOW_REGISTRATION_MODAL
+} from '../constants/action_types';
 
 export function openAuthenticationModal() {
   return {
@@ -7,8 +10,20 @@ export function openAuthenticationModal() {
 }
 
 export function closeAuthenticationModal() {
-  console.log('in close modal action');
   return {
     type: CLOSE_AUTHENTICATION_MODAL
+  }
+}
+
+export function showAuthenticationModal() {
+  return {
+    type: SHOW_AUTHENTICATION_MODAL
+  }
+
+}
+
+export function showRegistrationModal() {
+  return {
+    type: SHOW_REGISTRATION_MODAL
   }
 }

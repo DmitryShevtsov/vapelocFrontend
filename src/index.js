@@ -4,30 +4,17 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import VapeshopsList from './components/vapeshops/VapeshopsList';
-import {createStore, combineReducers, applyMiddleware } from 'redux';
-import {Provider} from 'react-redux';
-import {Router, Route, Switch} from 'react-router';
-import {syncHistoryWithStore, routerReducer, routerMiddleware, ConnectedRouter} from 'react-router-redux';
-import authentication_modal from "./reducers/authentication_modal";
-import vapeshops from './reducers/vapeshops';
-import user from './reducers/user';
+import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router';
 import createHistory from 'history/createBrowserHistory';
 import Vapeshop from './components/vapeshops/Vapeshop';
 import NotFound from './components/errors/NotFound'
 import Profile from "./components/profile/Profile";
+import storeConfig from "./store/store_config";
+import { ConnectedRouter } from 'react-router-redux';
+
 const history = createHistory();
-const middleware = routerMiddleware(history);
-
-
-const store = createStore(
-  combineReducers({
-    authentication_modal,
-    vapeshops,
-    user,
-    routing: routerReducer
-  }),
-  applyMiddleware(middleware)
-);
+const store = storeConfig();
 
 ReactDOM.render(
   <Provider store={store}>
@@ -35,7 +22,7 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path="/" component={VapeshopsList} />
-          <Route exact path="/vapeshops" component={VapeshopsList} />
+          <Route path="/vapeshops" component={VapeshopsList} />
           <Route path="/vapeshops/:id" component={Vapeshop} />
           <Route path="/profile" component={Profile}/>
           <Route component={NotFound} />

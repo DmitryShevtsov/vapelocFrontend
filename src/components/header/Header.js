@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import '../../css/Header.css';
+import './Header.css';
 import HeaderMenu from './HeaderMenu';
 import { Link } from 'react-router-dom';
 import { Row, Col, Container } from 'react-grid-system';
@@ -17,6 +17,7 @@ class Header extends Component {
           </Col>
           <Col sm={12} md={10} lg={10} className="Header-search-field">
             <HeaderMenu/>
+            
           </Col>
         </Row>
       </div>

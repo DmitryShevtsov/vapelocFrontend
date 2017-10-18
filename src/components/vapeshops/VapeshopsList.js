@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import VapeshopListElement from "./VapeshopListElement";
+import {getVapeshops} from "../../reducers/vapeshops";
 
 class VapeshopsList extends Component {
   getAllVapeshopElements() {
@@ -10,7 +11,6 @@ class VapeshopsList extends Component {
   }
 
   componentWillMount() {
-    this.props.dispatch({type: 'VAPESHOPS_GET_ALL'});
   }
 
   render() {
@@ -23,6 +23,12 @@ class VapeshopsList extends Component {
   }
 }
 
-export default connect((state) => {
-  return {state: state.vapeshops}
-})(VapeshopsList);
+function stateProps(state) {
+    return {state: state.vapeshops}
+}
+
+function dispatchToProps(dispatch) {
+  return { getVapeshops: dispatch(getVapeshops()) }
+}
+
+export default connect(stateProps, dispatchToProps)(VapeshopsList);
