@@ -1,24 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import VapeshopListElement from "./VapeshopListElement";
-import {getVapeshops} from "../../reducers/vapeshops";
+import VapeshopListElement from './VapeshopListElement';
+import { fetchVapeshops } from '../../actions/vapeshopActions';
+import { Link } from 'react-router-dom';
 
 class VapeshopsList extends Component {
-  getAllVapeshopElements() {
-    console.log(this.props.state);
-    return this.props.state.map((vapeshop) => {
-      return <VapeshopListElement key={vapeshop.id} name={vapeshop.name}/>
-    });
+  componentWillMount() {
+    document.title = "Vapeshops"
   }
 
-  componentWillMount() {
-    console.log(this.props.getVapeshops);
+  getAllVapeshopElements() {
+    return this.props.state.map((vapeshop) => {
+      var link = `/vapeshops/${vapeshop.id}`
+      return(
+        <Link key={vapeshop.id} to={link}>
+          <VapeshopListElement key={vapeshop.id} name={vapeshop.name}/>
+        </Link>
+      )
+    });
   }
 
   render() {
     return (
       <div>
-        Hello
         {this.getAllVapeshopElements()}
       </div>
     );
@@ -26,11 +30,11 @@ class VapeshopsList extends Component {
 }
 
 function stateProps(state) {
-    return {state: state.vapeshops}
+    return { state: state.vapeshops }
 }
 
 function dispatchToProps(dispatch) {
-  return { getVapeshops: dispatch(getVapeshops()) }
+  return { getVapeshops: dispatch(fetchVapeshops()) }
 }
 
 export default connect(stateProps, dispatchToProps)(VapeshopsList);

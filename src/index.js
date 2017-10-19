@@ -12,9 +12,10 @@ const store = storeConfig();
 
 ReactDOM.render(
   <Provider store={store}>
-  <ConnectedRouter history={history}>
-  <RoutesList />
-  </ConnectedRouter>
-  </Provider>
-  , document.getElementById('root'));
-  registerServiceWorker();
+    <ConnectedRouter history={history}>
+      <RoutesList />
+    </ConnectedRouter>
+  </Provider>,
+document.getElementById('root'));
+
+registerServiceWorker();

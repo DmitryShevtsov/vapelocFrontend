@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 class Vapeshop extends Component {
   componentWillMount() {
-    this.props.dispatch(this.getOneVapeshop(this.props.match.params.id));
-    console.log(this.props.match.params.id);
   }
 
   render() {
@@ -17,7 +15,12 @@ class Vapeshop extends Component {
   }
 }
 
-export default connect((state) => {
+function stateProps() {
+}
+
+function dispatchToProps() {
+}
+
+export default connect((state, ownProps) => {
   return { state: state }
 })(Vapeshop);
-

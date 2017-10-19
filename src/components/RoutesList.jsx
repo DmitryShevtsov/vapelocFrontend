@@ -12,8 +12,8 @@ class RoutesList extends Component {
       <Layout>
         <Switch>
           <Route exact path="/" component={VapeshopsList} />
-          <Route path="/vapeshops" component={VapeshopsList} />
           <Route path="/vapeshops/:id" component={Vapeshop} />
+          <Route path="/vapeshops" component={VapeshopsList} />
           <Route path="/profile" component={Profile}/>
           <Route component={NotFound} />
         </Switch>

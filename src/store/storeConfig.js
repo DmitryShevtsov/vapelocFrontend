@@ -1,6 +1,6 @@
 import {middleware as fetchMiddleware} from 'react-redux-fetch';
 import {reducer as fetchReducer} from 'react-redux-fetch';
-import authentication_modal from "../reducers/authentication_modal";
+import authenticationModal from "../reducers/authenticationModal";
 import vapeshops from '../reducers/vapeshops';
 import user from '../reducers/user';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
@@ -14,7 +14,7 @@ const middleware = routerMiddleware(history);
 
 export default function storeConfig() {
   return createStore(combineReducers({
-      authentication_modal,
+      authenticationModal,
       vapeshops,
       user,
       routing: routerReducer,

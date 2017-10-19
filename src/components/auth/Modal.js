@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { closeAuthenticationModal, openAuthenticationModal } from '../../actions/modal_actions';
+import { closeAuthenticationModal, openAuthenticationModal } from '../../actions/modalActions';
 import Registration from './Registration';
 import Authentication from './Authentication';
 
@@ -17,8 +17,6 @@ class ModalComponent extends Component {
   close = () => {
     this.dispatch(closeAuthenticationModal());
   };
-
-
 
   render() {
     return (
@@ -40,5 +38,5 @@ class ModalComponent extends Component {
 }
 
 export default connect((store) => {
-  return({state: store.authentication_modal});
+  return({state: store.authenticationModal});
 })(ModalComponent);
