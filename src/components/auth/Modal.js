@@ -20,15 +20,14 @@ class ModalComponent extends Component {
 
   render() {
     return (
-      <div>
-        <a href="javascript:void(0)" onClick={this.open}> Auth </a>
+      <a href="javascript:void(0)" onClick={this.open}> {this.props.children}
         <Modal
           isOpen={this.props.state.isOpen}
           contentLabel="Modal">
-          <button onClick={this.close}>Close</button>
+            <button onClick={this.close}>Close</button>
           {this.form()}
         </Modal>
-      </div>
+      </a>
     );
   }
 

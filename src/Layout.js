@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
-import Header from "./components/header/Header";
+import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import { Row, Col, Container } from 'react-grid-system';
 
 class Layout extends Component {
   render() {
     return (
-      <div className="App">
+      <Container>
         <Header />
         {this.props.children}
         <Footer />
-      </div>
+      </Container>
     );
   }
 }

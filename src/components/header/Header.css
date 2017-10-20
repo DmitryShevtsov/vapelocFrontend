@@ -1,35 +1,36 @@
-.logo-image {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
+.header {
+  width: 100%;
 }
 
-.Header-spaces {
-    margin-top: 11px;
-    margin-bottom: 11px;
-    height: 150px;
+.header .logo {
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
 }
 
-.Header-search-field {
-    display: block;
-    position: relative;
-    top: 20%;
-    margin-bottom: 25px;
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
 }
 
-.Header-menu {
-    width: 100%;
-}
-
-.Header-menu ul li {
-    display: inline;
+.menu li {
     float: left;
 }
 
-.pull-right {
-    float: right;
+.menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-body {
-    width: 100%;
+/* Change the link color to #111 (black) on hover */
+.menu li a:hover {
+    background-color: #111;
 }
