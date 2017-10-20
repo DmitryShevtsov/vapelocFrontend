@@ -1,7 +1,7 @@
 import {
   OPEN_AUTHENTICATION_MODAL, CLOSE_AUTHENTICATION_MODAL,
   SHOW_AUTHENTICATION_MODAL, SHOW_REGISTRATION_MODAL
-} from '../constants/actionTypes';
+} from '../Constants/modalsConstants';
 
 export function openAuthenticationModal() {
   return {

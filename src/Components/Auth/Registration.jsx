@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { Row, Container } from 'react-grid-system';
 import { connect } from 'react-redux';
-import { showAuthenticationModal} from "../../actions/modalActions";
+import { showAuthenticationModal} from "../../Actions/modalActions";
 
 class Registration extends Component {
   authForm = () => {

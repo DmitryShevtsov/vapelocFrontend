@@ -1,10 +1,10 @@
-import {GET_VAPESHOPS, GET_ONE_VAPESHOP} from "../constants/actionTypes";
+import {GET_VAPESHOPS, GET_ONE_VAPESHOP, ADD_VAPESHOPS} from '../Constants/vapeshopsConstants';
 
 const DEFAULT_STATE = [];
 
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case 'ADD_VAPESHOPS': {
+    case ADD_VAPESHOPS: {
       return action.vapeshops;
     }
 

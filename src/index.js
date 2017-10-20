@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import storeConfig from './store/storeConfig';
+import storeConfig from './Store/storeConfig';
 import { ConnectedRouter } from 'react-router-redux';
-import RoutesList from './components/RoutesList';
+import RoutesList from './Components/RoutesList';
 
 const history = createHistory();
 const store = storeConfig();

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Modal from '../auth/Modal';
+import Modal from '../Auth/Modal';
 import './Header.css';
 
 class HeaderMenu extends Component {

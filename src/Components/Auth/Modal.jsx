@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { closeAuthenticationModal, openAuthenticationModal } from '../../actions/modalActions';
+import { closeAuthenticationModal, openAuthenticationModal } from '../../Actions/modalActions';
 import Registration from './Registration';
 import Authentication from './Authentication';
 import '../../Styles/Buttons.css';

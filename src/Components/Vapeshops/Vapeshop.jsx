@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 class Vapeshop extends Component {
   componentWillMount() {
+    document.title = "SINGLE VAPESHOP";
   }
 
   render() {

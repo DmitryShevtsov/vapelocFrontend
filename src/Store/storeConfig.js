@@ -1,8 +1,8 @@
 import {middleware as fetchMiddleware} from 'react-redux-fetch';
 import {reducer as fetchReducer} from 'react-redux-fetch';
-import authenticationModal from "../reducers/authenticationModal";
-import vapeshops from '../reducers/vapeshops';
-import user from '../reducers/user';
+import authenticationModal from "../Reducers/authenticationModal";
+import vapeshops from '../Reducers/vapeshops';
+import user from '../Reducers/user';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {routerReducer, routerMiddleware} from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';

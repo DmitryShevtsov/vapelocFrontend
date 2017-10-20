@@ -1,4 +1,5 @@
-import { GET_ONE_VAPESHOP, GET_VAPESHOPS, ADD_VAPESHOPS } from "../constants/actionTypes";
+import { GET_ONE_VAPESHOP, GET_VAPESHOPS, ADD_VAPESHOPS } from '../Constants/vapeshopsConstants';
+import { URL } from '../Constants/urlsConstants';
 
 export function getOneVapeshop(id) {
   return {
@@ -22,7 +23,7 @@ export function addVapeshops(vapeshops) {
 
 export function fetchVapeshops() {
   return (dispatch) => {
-    return fetch('http://localhost:3001/vapeshops')
+    return fetch(`${URL}/vapeshops`)
       .then(response => {
         return response.json();
       }).then(vapeshops => {
