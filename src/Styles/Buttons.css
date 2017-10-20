@@ -1,0 +1,23 @@
+.button {
+  width: 55px;
+  height: 27px;
+  background: #cdcdcd;
+  border: none;
+}
+
+.button-success {
+  background: green;
+  color: #fff;
+}
+
+.button-alert {
+}
+
+.button-error {
+  color: #fff;
+  background: red;
+}
+
+.button-error:hover {
+  background: #ff0066;
+}
