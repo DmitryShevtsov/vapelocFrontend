@@ -1,3 +1,4 @@
 export const GET_VAPESHOPS = 'VAPESHOPS_GET_ALL';
 export const ADD_VAPESHOPS = 'ADD_VAPESHOPS';
 export const GET_ONE_VAPESHOP = 'VAPESHOPS_GET_ONE';
+export const ADD_VAPESHOP = 'ADD_VAPESHOP';

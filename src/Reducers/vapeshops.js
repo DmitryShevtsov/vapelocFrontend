@@ -1,9 +1,10 @@
-import {GET_VAPESHOPS, GET_ONE_VAPESHOP, ADD_VAPESHOPS} from '../Constants/vapeshopsConstants';
+import {GET_VAPESHOPS, GET_ONE_VAPESHOP, ADD_VAPESHOPS, ADD_VAPESHOP} from '../Constants/vapeshopsConstants';
 
 const DEFAULT_STATE = [];
 
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
+
     case ADD_VAPESHOPS: {
       return action.vapeshops;
     }
@@ -16,6 +17,20 @@ export default (state = DEFAULT_STATE, action) => {
       return state.filter((item) => {
         item.id == action.id
       });
+    }
+    case ADD_VAPESHOP: {
+      let vapeshops = state.filter((vapeshop) => {
+        vapeshop.id === action.vapeshop.id
+      });
+
+      if (vapeshops.length > 0){
+        return state;
+      } else {
+        return [
+          ...state,
+          action.vapeshop
+        ]
+      }
     }
 
     default:

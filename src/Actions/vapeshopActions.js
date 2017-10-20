@@ -1,4 +1,4 @@
-import { GET_ONE_VAPESHOP, GET_VAPESHOPS, ADD_VAPESHOPS } from '../Constants/vapeshopsConstants';
+import { GET_ONE_VAPESHOP, GET_VAPESHOPS, ADD_VAPESHOPS, ADD_VAPESHOP } from '../Constants/vapeshopsConstants';
 import { URL } from '../Constants/urlsConstants';
 
 export function getOneVapeshop(id) {
@@ -21,6 +21,13 @@ export function addVapeshops(vapeshops) {
   }
 }
 
+export function addVapeshop(vapeshop) {
+  return {
+    type: ADD_VAPESHOP,
+    vapeshop
+  }
+}
+
 export function fetchVapeshops() {
   return (dispatch) => {
     return fetch(`${URL}/vapeshops`)
@@ -29,6 +36,18 @@ export function fetchVapeshops() {
       }).then(vapeshops => {
         console.log(vapeshops);
         dispatch(addVapeshops(vapeshops));
+      });
+  }
+}
+
+export function fetchSingleVapeshop(id) {
+  return (dispatch) => {
+    return fetch(`${URL}/vapeshops/${id}`)
+      .then(response => {
+        return response.json();
+      }).then(vapeshop => {
+        console.log(vapeshop);
+        dispatch(addVapeshop(vapeshop));
       });
   }
 }

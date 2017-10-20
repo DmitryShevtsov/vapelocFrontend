@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import  { fetchSingleVapeshop} from "../../Actions/vapeshopActions";
 
 
 class Vapeshop extends Component {
@@ -16,12 +17,12 @@ class Vapeshop extends Component {
   }
 }
 
-function stateProps() {
+function stateProps(state, ownProps) {
+  return { state: state, id: ownProps.match.params.id };
 }
 
-function dispatchToProps() {
+function dispatchToProps(dispatch, dispatchProps) {
+  return { getVapeshop: dispatch(fetchSingleVapeshop(dispatchProps.match.params.id))};
 }
 
-export default connect((state, ownProps) => {
-  return { state: state }
-})(Vapeshop);
+export default connect(stateProps, dispatchToProps)(Vapeshop);
