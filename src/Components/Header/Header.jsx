@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Header.css';
 import HeaderMenu from './HeaderMenu';
 import { Link } from 'react-router-dom';
-import { Row, Col, Container } from 'react-grid-system';
+import { Row, Col } from 'react-grid-system';
 
 class Header extends Component {
   render() {

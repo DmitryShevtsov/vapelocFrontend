@@ -4,7 +4,7 @@ class VapeshopListElement extends Component {
   render() {
     return(
       <div>
-        {this.props.name}
+        <h2>{this.props.name}</h2>
       </div>
     );
   }

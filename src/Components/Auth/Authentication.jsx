@@ -1,11 +1,22 @@
-import React,{Component} from 'react';
-import { Row, Col, Container } from 'react-grid-system';
-import { connect } from 'react-redux';
-import { showRegistrationModal } from "../../Actions/modalActions";
+import React, {Component} from 'react';
+import {Row, Container} from 'react-grid-system';
+import {connect} from 'react-redux';
+import {showRegistrationModal} from "../../Actions/modalActions";
+import {loginUser} from "../../Actions/userActions";
 
 class Authentication extends Component {
   registrationForm = () => {
     this.props.dispatch(showRegistrationModal());
+  };
+
+  submit = () => {
+    user = {
+      user: {
+        phone: ,
+        password: 
+      }
+    };
+    loginUser(user);
   };
 
   render() {
@@ -21,6 +32,17 @@ class Authentication extends Component {
   }
 }
 
-export default connect((store) => {
-  return({state: store.authenticationModal});
-})(Authentication);
+function stateProps(state) {
+  return {
+    user: state.user
+  };
+}
+
+function dispatchToProps(dispatch) {
+  return {
+    loginUser: (user) => { dispatch(loginUser(user)) }
+  };
+}
+
+
+export default connect(stateProps, dispatchToProps)(Authentication);

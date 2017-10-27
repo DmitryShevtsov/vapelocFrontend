@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import { Row, Col, Container } from 'react-grid-system';
+import {Container} from 'react-grid-system';
 
 class Layout extends Component {
   render() {

@@ -1,39 +1,22 @@
-import {GET_VAPESHOPS, GET_ONE_VAPESHOP, ADD_VAPESHOPS, ADD_VAPESHOP} from '../Constants/vapeshopsConstants';
+import {ADD_VAPESHOPS, ADD_VAPESHOP, CLEAR_ACTIVE_VAPESHOP} from '../Constants/vapeshopsConstants';
 
-const DEFAULT_STATE = [];
+const DEFAULT_STATE = {vapeshopsList: [], activeVapeshop: null};
 
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
 
     case ADD_VAPESHOPS: {
-      return action.vapeshops;
+      return {...state, vapeshopsList: action.vapeshops};
     }
 
-    case GET_VAPESHOPS: {
-      return [...state];
-    }
-
-    case GET_ONE_VAPESHOP: {
-      return state.filter((item) => {
-        item.id == action.id
-      });
-    }
     case ADD_VAPESHOP: {
-      let vapeshops = state.filter((vapeshop) => {
-        vapeshop.id === action.vapeshop.id
-      });
-
-      if (vapeshops.length > 0){
-        return state;
-      } else {
-        return [
-          ...state,
-          action.vapeshop
-        ]
-      }
+      return {...state, activeVapeshop: action.vapeshop};
+    }
+    case CLEAR_ACTIVE_VAPESHOP: {
+      return {...state, activeVapeshop: null};
     }
 
     default:
-    return state;
+      return state;
   }
 }

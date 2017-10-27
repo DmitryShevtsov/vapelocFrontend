@@ -1,1 +1,1 @@
-export const URL = 'https://59d4eec7448f920011727284.mockapi.io';
+export const URL = 'http://192.168.0.100';
