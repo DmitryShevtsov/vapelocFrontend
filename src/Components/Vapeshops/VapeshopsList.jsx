@@ -21,9 +21,17 @@ class VapeshopsList extends Component {
     });
   }
 
+  currentUser() {
+    if(this.props.currentUser) {
+      return(<h1>{this.props.currentUser.username}</h1>);
+    }
+    return null;
+  }
+
   render() {
     return (
       <div>
+        {this.currentUser()}
         {this.getAllVapeshopElements()}
       </div>
     );
@@ -31,7 +39,8 @@ class VapeshopsList extends Component {
 }
 
 function stateProps(state) {
-    return { vapeshops: state.vapeshops }
+    return { vapeshops: state.vapeshops,
+    currentUser: state.user }
 }
 
 function dispatchToProps(dispatch) {

@@ -1,1 +1,1 @@
-export const URL = 'http://192.168.0.100';
+export const URL = 'http://radiant-meadow-12237.herokuapp.com/';

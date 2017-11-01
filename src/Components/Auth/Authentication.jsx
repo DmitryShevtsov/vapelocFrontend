@@ -1,33 +1,51 @@
 import React, {Component} from 'react';
-import {Row, Container} from 'react-grid-system';
 import {connect} from 'react-redux';
 import {showRegistrationModal} from "../../Actions/modalActions";
 import {loginUser} from "../../Actions/userActions";
 
 class Authentication extends Component {
-  registrationForm = () => {
-    this.props.dispatch(showRegistrationModal());
-  };
-
-  submit = () => {
-    user = {
-      user: {
-        phone: ,
-        password: 
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      phone: '',
+      password: ''
     };
-    loginUser(user);
-  };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let user = {
+      phone: this.state.phone,
+      password: this.state.password
+    };
+    this.props.loginUser(user);
+  }
 
   render() {
-    return(
-      <Container>
-        <h1>Fucking AUTH!!!!!</h1>
-        <Row><label htmlFor="phone">Phone</label><input type='tel' id="phone"/></Row>
-        <Row><label htmlFor="password">Password</label><input type='text' id="password"/></Row>
-        <button onClick={this.close}>Submit</button>
-        <button onClick={this.registrationForm}> Register </button>
-      </Container>
+    console.log("RENDER");
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Phone:
+            <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange}/>
+          </label>
+          <label>
+            Password:
+            <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
+          </label>
+          <input type="submit" value="Submit"/>
+        </form>
+        <button onClick={this.props.registrationModal}>Registration</button>
+      </div>
+
     );
   }
 }
@@ -38,11 +56,15 @@ function stateProps(state) {
   };
 }
 
-function dispatchToProps(dispatch) {
+  function dispatchToProps(dispatch) {
   return {
-    loginUser: (user) => { dispatch(loginUser(user)) }
+    loginUser: (user) => {
+      dispatch(loginUser(user))
+    },
+    registrationModal: () => {
+      dispatch(showRegistrationModal())
+    }
   };
 }
-
 
 export default connect(stateProps, dispatchToProps)(Authentication);
