@@ -28,13 +28,11 @@ export function fetchVapeshops() {
 }
 
 export function fetchSingleVapeshop(id) {
-  console.log(id);
   return (dispatch) => {
     return fetch(`${URL}/vapeshops/${id}`)
       .then(response => {
         return response.json();
       }).then(vapeshop => {
-        console.log(vapeshop);
         dispatch(addVapeshop(vapeshop));
       });
   }

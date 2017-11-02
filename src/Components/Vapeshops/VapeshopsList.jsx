@@ -10,7 +10,6 @@ class VapeshopsList extends Component {
   }
 
   getAllVapeshopElements() {
-    console.log(this.props.vapeshops);
     return this.props.vapeshops.vapeshopsList.map((vapeshop) => {
       var link = `/vapeshops/${vapeshop.id}`;
       return(

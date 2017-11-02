@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import Modal from '../Auth/Modal';
+import AuthorizedUser from './AutorizedUser';
 import './Header.css';
 
 class HeaderMenu extends Component {
@@ -10,7 +10,7 @@ class HeaderMenu extends Component {
         <ul>
           <li><Link to='/'> Home </Link></li>
           <li><Link to='/profile'> Profile </Link> </li>
-          <li className="pull-right"><Modal>Login</Modal></li>
+          <AuthorizedUser/>
         </ul>
       </div>
     );

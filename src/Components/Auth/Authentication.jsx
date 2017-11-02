@@ -29,7 +29,6 @@ class Authentication extends Component {
   }
 
   render() {
-    console.log("RENDER");
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -56,7 +55,7 @@ function stateProps(state) {
   };
 }
 
-  function dispatchToProps(dispatch) {
+function dispatchToProps(dispatch) {
   return {
     loginUser: (user) => {
       dispatch(loginUser(user))

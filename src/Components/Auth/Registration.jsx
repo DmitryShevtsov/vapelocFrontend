@@ -1,8 +1,8 @@
-import React,{Component} from 'react';
-import { Row, Container } from 'react-grid-system';
-import { connect } from 'react-redux';
-import { showAuthenticationModal} from "../../Actions/modalActions";
-import {createUser} from "../../Actions/userActions";
+import React, {Component} from 'react';
+import {Row, Container} from 'react-grid-system';
+import {connect} from 'react-redux';
+import {showAuthenticationModal} from "../../Actions/modalActions";
+import {createUser, registrateUser} from "../../Actions/userActions";
 
 class Registration extends Component {
   constructor(props) {
@@ -15,7 +15,6 @@ class Registration extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
 
   handleChange(event) {
@@ -33,7 +32,7 @@ class Registration extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -69,7 +68,7 @@ function dispatchToProps(dispatch) {
       dispatch(showAuthenticationModal())
     },
     registerUser: (user) => {
-      dispatch(createUser(user))
+      dispatch(registrateUser(user))
     }
   }
 }

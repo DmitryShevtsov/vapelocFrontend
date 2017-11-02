@@ -14,9 +14,6 @@ export function removeUser() {
   }
 }
 
-export function createUser(user) {
-
-}
 
 export function loginUser(user) {
   return (dispatch) => {
@@ -25,20 +22,46 @@ export function loginUser(user) {
     data.append('user[password]', user.password);
     return fetch(`${URL}/session`, {method: 'POST', body: data})
       .then((response) => {
-        if(response.status === 202) {
+        if (response.status === 202) {
           return response.json();
         } else {
           return null;
         }
       })
       .then((user) => {
-        console.log(user);
         dispatch(addUser(user));
       })
       .catch((error) => {
-        console.log("THIS IS ERROR");
-        console.log(error);
         dispatch(addUser(null));
       });
+  }
+}
+
+export function registrateUser(user) {
+  return (dispatch) => {
+    let data = new FormData();
+    data.append('user[phone]', user.phone);
+    data.append('user[password]', user.password);
+    data.append('user[username]', user.username);
+    return fetch(`${URL}/registration`, {method: 'POST', body: data})
+      .then((response) => {
+        return response.json();
+      })
+      .then((user) => {
+        dispatch(addUser(user));
+      })
+  }
+}
+
+export function logoutUser(user) {
+  return (dispatch) => {
+    return fetch(`${URL}/session`, {
+      method: 'DELETE', headers: {
+        'AUTH-TOKEN': user.token
+      }
+    })
+      .then((response) => {
+        dispatch(removeUser());
+      })
   }
 }
