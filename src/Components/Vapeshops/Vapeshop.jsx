@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import  { fetchSingleVapeshop, clearActiveVapeshop} from '../../Actions/vapeshopActions';
+import VapeshopEditModal from './VapeshopEditModal';
 
 
 class Vapeshop extends Component {
@@ -24,6 +25,9 @@ class Vapeshop extends Component {
   renderVapeshop() {
     return (<div>
       {this.props.vapeshop.name}
+      {this.props.description}
+      <VapeshopEditModal/>
+
     </div>);
   }
 }

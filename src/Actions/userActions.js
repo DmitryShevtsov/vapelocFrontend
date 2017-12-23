@@ -1,4 +1,4 @@
-import {ADD_USER, REMOVE_USER} from '../Constants/userConstants';
+import {ADD_USER, REMOVE_USER, ADD_USER_ERRORS, REMOVE_USER_ERRORS} from '../Constants/userConstants';
 import {URL} from '../Constants/urlsConstants';
 
 export function addUser(user) {
@@ -14,6 +14,19 @@ export function removeUser() {
   }
 }
 
+export function removeUserErrors() {
+  return {
+    type: REMOVE_USER_ERRORS
+  }
+}
+
+export function addUserErrors(payload) {
+  return {
+    type: ADD_USER_ERRORS,
+    payload: payload
+  }
+}
+
 
 export function loginUser(user) {
   return (dispatch) => {
@@ -25,13 +38,19 @@ export function loginUser(user) {
         if (response.status === 202) {
           return response.json();
         } else {
-          return null;
+          throw response.json().then((res) => {
+            return res;
+          });
         }
       })
       .then((user) => {
         dispatch(addUser(user));
+        dispatch(removeUserErrors());
       })
       .catch((error) => {
+        Promise.resolve(error).then((value) => {
+          dispatch(addUserErrors(value));
+        });
         dispatch(addUser(null));
       });
   }
@@ -45,10 +64,22 @@ export function registrateUser(user) {
     data.append('user[username]', user.username);
     return fetch(`${URL}/registration`, {method: 'POST', body: data})
       .then((response) => {
-        return response.json();
+        if (response.status== 201) {
+          return response.json();
+        } else {
+          throw response.json().then((res) => {
+            return res;
+          });
+        }
       })
       .then((user) => {
         dispatch(addUser(user));
+        dispatch(removeUserErrors());
+      })
+      .catch((error) => {
+        Promise.resolve(error).then((value) => {
+          dispatch(addUserErrors(value));
+        });
       })
   }
 }
@@ -60,7 +91,7 @@ export function logoutUser(user) {
         'AUTH-TOKEN': user.token
       }
     })
-      .then((response) => {
+      .then(() => {
         dispatch(removeUser());
       })
   }

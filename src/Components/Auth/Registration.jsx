@@ -33,18 +33,19 @@ class Registration extends Component {
 
   render() {
     return (
+
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Phone:
+          <label style={this.phoneLabel().style}>
+            Phone: {this.phoneLabel().errorType}
             <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange}/>
           </label>
-          <label>
-            Password:
+          <label style={this.passwordLabel().style}>
+            Password:{this.passwordLabel().errorType}
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
           </label>
-          <label>
-            Name:
+          <label style={this.nameLabel().style}>
+            Name: {this.nameLabel().errorType}
             <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
           </label>
           <input type="submit" value="Submit"/>
@@ -54,6 +55,52 @@ class Registration extends Component {
 
     );
   }
+
+  phoneLabel = () => {
+    if (this.props.user.errors.phone.length > 0) {
+      return {
+        errorType: this.props.user.errors.phone,
+        style: {
+          color: 'red'
+        }
+      }
+    }
+    return {
+      errorType: null,
+      style: {}
+    };
+  };
+
+
+  nameLabel = () => {
+    if (this.props.user.errors.username.length > 0) {
+      return {
+        errorType: this.props.user.errors.username,
+        style: {
+          color: 'red'
+        }
+      }
+    }
+    return {
+      errorType: null,
+      style: {}
+    };
+  };
+
+  passwordLabel = () => {
+    if (this.props.user.errors.password.length > 0) {
+      return {
+        errorType: this.props.user.errors.password,
+        style: {
+          color: 'red'
+        }
+      }
+    }
+    return {
+      errorType: null,
+      style: {}
+    };
+  };
 }
 
 function stateProps(state) {

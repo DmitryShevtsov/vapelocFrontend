@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Modal from '../Auth/Modal';
+import Modal from '../Auth/AuthModal';
 import {connect} from 'react-redux';
 import {logoutUser, removeUser} from "../../Actions/userActions";
 import {closeAuthenticationModal} from "../../Actions/modalActions";
@@ -7,7 +7,7 @@ import {closeAuthenticationModal} from "../../Actions/modalActions";
 
 class AutorizedUser extends Component {
   render() {
-    if (this.props.currentUser) {
+    if (this.props.currentUser.currentUser) {
       return this.user();
     } else {
       return this.guest();
@@ -16,13 +16,13 @@ class AutorizedUser extends Component {
 
   guest = () => {
     return (
-      <li className="pull-right"><Modal>Login</Modal></li>
+      <li><Modal>Login</Modal></li>
     )
   };
 
   user = () => {
     return (
-      <li className="pull-right">
+      <li>
         <a href="javascript:void(0)" onClick={this.logout}>Logout</a>
       </li>
     )
@@ -42,7 +42,7 @@ function stateProps(state) {
 function dispatchToProps(dispatch) {
   return {
     logout: user => {
-      dispatch(logoutUser(user))
+      dispatch(logoutUser(user));
       dispatch(closeAuthenticationModal())
     }
   }

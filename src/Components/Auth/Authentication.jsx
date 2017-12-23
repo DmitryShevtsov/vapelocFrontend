@@ -31,6 +31,10 @@ class Authentication extends Component {
   render() {
     return (
       <div>
+        <label style={{color: 'red'}}>
+          {this.props.user.errors.message}
+        </label>
+
         <form onSubmit={this.handleSubmit}>
           <label>
             Phone:
