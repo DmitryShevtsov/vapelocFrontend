@@ -25,7 +25,7 @@ class Vapeshop extends Component {
   renderVapeshop() {
     return (<div>
       {this.props.vapeshop.name}
-      {this.props.description}
+      {this.props.vapeshop.description}
       <VapeshopEditModal/>
 
     </div>);
