@@ -5,7 +5,7 @@ import {fetchVapeshops} from '../../Actions/vapeshopActions';
 import {Link} from 'react-router-dom';
 import {Row, Col} from 'react-grid-system';
 import NewVapeshopModal from './VapeshopModal';
-import {MapContainer} from "../Map/MapContainer";
+import MapContainer from "../Map/MapContainer";
 
 class VapeshopsList extends Component {
   componentWillMount() {
@@ -43,6 +43,7 @@ class VapeshopsList extends Component {
           </Col>
           <Col sm={0} md={4} lg={4}>
             <NewVapeshopModal>Create new vapeshop</NewVapeshopModal>
+            <MapContainer/>
           </Col>
         </Row>
 

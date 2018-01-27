@@ -59,12 +59,13 @@ export function loginUser(user) {
 export function registrateUser(user) {
   return (dispatch) => {
     let data = new FormData();
-    data.append('user[phone]', user.phone);
-    data.append('user[password]', user.password);
-    data.append('user[username]', user.username);
+    data.append('phone', user.phone);
+    data.append('password', user.password);
+    data.append('username', user.username);
+    console.log(data);
     return fetch(`${URL}/registration`, {method: 'POST', body: data})
       .then((response) => {
-        if (response.status== 201) {
+        if (response.status === 201) {
           return response.json();
         } else {
           throw response.json().then((res) => {
