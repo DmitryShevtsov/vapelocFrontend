@@ -1,5 +1,7 @@
-import {OPEN_NEW_VAPESHOP_MODAL, CLOSE_NEW_VAPESHOP_MODAL, CREATE_VAPESHOP, EDIT_VAPESHOP, OPEN_EDIT_VAPESHOP_MODAL,
+import {OPEN_NEW_VAPESHOP_MODAL, CLOSE_NEW_VAPESHOP_MODAL, EDIT_VAPESHOP, OPEN_EDIT_VAPESHOP_MODAL,
 CLOSE_EDIT_VAPESHOP_MODAL} from "../Constants/modalsConstants";
+import {URL} from "../Constants/urlsConstants";
+import {fetchVapeshops, addVapeshopErrors} from "./vapeshopActions";
 
 export function openNewVapeshopModal() {
   return {
@@ -14,10 +16,29 @@ export function closeNewVapeshopModal() {
 }
 
 export function createVapeshop(vapeshop) {
-  return {
-    type: CREATE_VAPESHOP,
-    payload: vapeshop
+  return (dispatch) => {
+    let data = new FormData();
+    data.append('name', vapeshop.name);
+    data.append('description', vapeshop.description);
+    return fetch(`${URL}/vapeshops`, {method: 'POST', body: data}).then((response) => {
+      if (response.status === 201) {
+        return response.json();
+      }
+      else {
+        throw response.json().then((res) => {
+          return res;
+        });
+      }
+    }).then(() => {
+      fetchVapeshops();
+    })
+      .catch((error) => {
+        Promise.resolve(error).then((value) => {
+          dispatch(addVapeshopErrors(value));
+        });
+      });
   }
+
 }
 
 export function editVapeshop() {

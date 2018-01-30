@@ -1,4 +1,4 @@
-import {ADD_VAPESHOPS, ADD_VAPESHOP, CLEAR_ACTIVE_VAPESHOP} from '../Constants/vapeshopsConstants';
+import {ADD_VAPESHOPS, ADD_VAPESHOP, CLEAR_ACTIVE_VAPESHOP, ADD_VAPESHOP_ERRORS} from '../Constants/vapeshopsConstants';
 import {URL} from '../Constants/urlsConstants';
 
 
@@ -40,5 +40,12 @@ export function fetchSingleVapeshop(id) {
  export function clearActiveVapeshop() {
    return {
      type: CLEAR_ACTIVE_VAPESHOP
+   }
+ }
+
+ export function  addVapeshopErrors(payload) {
+   return {
+     type: ADD_VAPESHOP_ERRORS,
+     payload: payload
    }
  }

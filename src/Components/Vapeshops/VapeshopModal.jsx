@@ -45,6 +45,9 @@ class NewVapeshopModal extends Component {
           isOpen={this.props.isOpen}
           contentLabel="Modal">
           <form onSubmit={this.handleSubmit}>
+            <label style={{color: 'red'}}>
+              {this.props.vapeshop.vapeshopErrors.message}
+            </label>
             <label>
               Name of vapeshop:
               <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
@@ -66,7 +69,8 @@ function stateProps(state) {
   return {
     isOpen: state.newVapeshopModal.isOpen,
     name: state.newVapeshopModal.name,
-    description: state.newVapeshopModal.description
+    description: state.newVapeshopModal.description,
+    vapeshop: state.vapeshops
 
   }
 }

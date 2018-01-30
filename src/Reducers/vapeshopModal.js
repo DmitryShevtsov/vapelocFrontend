@@ -23,16 +23,6 @@ export default function newVapeshopModal(state = DEFAULT_STATE, action) {
       }
     }
 
-    case CREATE_VAPESHOP: {
-      return {
-        ...state,
-        name: action.payload.name,
-        description: action.payload.description
-      }
-    }
-
-
-
     default:
       return state;
   }

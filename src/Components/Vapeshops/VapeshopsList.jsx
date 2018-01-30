@@ -43,7 +43,7 @@ class VapeshopsList extends Component {
           </Col>
           <Col sm={0} md={4} lg={4}>
             <NewVapeshopModal>Create new vapeshop</NewVapeshopModal>
-            <MapContainer/>
+
           </Col>
         </Row>
 
