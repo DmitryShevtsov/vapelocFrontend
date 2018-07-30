@@ -33,6 +33,13 @@ class VapeshopsList extends Component {
     return null;
   }
 
+  newVapeshop() {
+    if (this.props.currentUser.currentUser) {
+      return <NewVapeshopModal/>
+    }
+    else return null
+  }
+
   render() {
     return (
       <div>
@@ -42,8 +49,8 @@ class VapeshopsList extends Component {
             {this.getAllVapeshopElements()}
           </Col>
           <Col sm={0} md={4} lg={4}>
-            <NewVapeshopModal>Create new vapeshop</NewVapeshopModal>
-
+            {this.newVapeshop()}
+            <MapContainer vapeshops={this.props.vapeshops.vapeshopsList}/>
           </Col>
         </Row>
 

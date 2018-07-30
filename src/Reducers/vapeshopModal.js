@@ -1,9 +1,9 @@
-import {OPEN_NEW_VAPESHOP_MODAL, CLOSE_NEW_VAPESHOP_MODAL, CREATE_VAPESHOP} from "../Constants/modalsConstants";
+import {OPEN_NEW_VAPESHOP_MODAL, CLOSE_NEW_VAPESHOP_MODAL} from "../Constants/modalsConstants";
+import {ADD_NEW_MARKER, REMOVE_NEW_MARKER} from "../Constants/vapeshopsConstants";
 
 const DEFAULT_STATE = {
   isOpen: false,
-  name: [],
-  description: []
+  markerPosition: null
 };
 
 export default function newVapeshopModal(state = DEFAULT_STATE, action) {
@@ -20,6 +20,23 @@ export default function newVapeshopModal(state = DEFAULT_STATE, action) {
       return {
         ...state,
         isOpen: false
+      }
+    }
+
+    case ADD_NEW_MARKER: {
+      return {
+        ...state,
+        markerPosition: {
+          lat: action.payload.lat,
+          lng: action.payload.lng
+        }
+      }
+    }
+
+    case REMOVE_NEW_MARKER: {
+      return {
+        ...state,
+        markerPosition: null
       }
     }
 

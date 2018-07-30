@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { closeAuthenticationModal, openAuthenticationModal } from '../../Actions/modalActions';
 import Registration from './Registration';
 import Authentication from './Authentication';
+import '../../Styles/Modals.css';
 import '../../Styles/Buttons.css';
+import {removeUserErrors} from "../../Actions/userActions";
 
 class ModalComponent extends Component {
   componentWillMount() {
@@ -17,15 +19,16 @@ class ModalComponent extends Component {
 
   close = () => {
     this.dispatch(closeAuthenticationModal());
+    this.dispatch(removeUserErrors());
   };
 
   render() {
     return (
       <a href="javascript:void(0)" onClick={this.open}> {this.props.children}
-        <Modal
+        <Modal className="modal"
           isOpen={this.props.state.isOpen}
           contentLabel="Modal">
-            <button className="button button-error" onClick={this.close}>Close</button>
+            <button className="button-close" onClick={this.close}><span>Close</span></button>
           {this.form()}
         </Modal>
       </a>

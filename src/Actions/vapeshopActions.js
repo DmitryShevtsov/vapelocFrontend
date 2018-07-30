@@ -1,4 +1,7 @@
-import {ADD_VAPESHOPS, ADD_VAPESHOP, CLEAR_ACTIVE_VAPESHOP, ADD_VAPESHOP_ERRORS} from '../Constants/vapeshopsConstants';
+import {
+  ADD_VAPESHOPS, ADD_VAPESHOP, CLEAR_ACTIVE_VAPESHOP, ADD_VAPESHOP_ERRORS,
+  REMOVE_VAPESHOP_ERRORS
+} from '../Constants/vapeshopsConstants';
 import {URL} from '../Constants/urlsConstants';
 
 
@@ -37,15 +40,30 @@ export function fetchSingleVapeshop(id) {
       });
   }
 }
- export function clearActiveVapeshop() {
-   return {
-     type: CLEAR_ACTIVE_VAPESHOP
-   }
- }
 
- export function  addVapeshopErrors(payload) {
-   return {
-     type: ADD_VAPESHOP_ERRORS,
-     payload: payload
-   }
- }
+export function clearActiveVapeshop() {
+  return {
+    type: CLEAR_ACTIVE_VAPESHOP
+  }
+}
+
+export function addVapeshopErrors(payload) {
+  return {
+    type: ADD_VAPESHOP_ERRORS,
+    payload: payload
+  }
+}
+
+export function removeVapeshopErrors() {
+  return {
+    type: REMOVE_VAPESHOP_ERRORS
+  }
+}
+
+export function deleteVapeshop(id) {
+  return (dispatch) => {
+    return fetch(`${URL}/vapeshops/${id}`, {method: 'DELETE'}).then((res) => {
+      dispatch(clearActiveVapeshop());
+    });
+  }
+}

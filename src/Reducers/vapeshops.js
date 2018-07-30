@@ -21,7 +21,7 @@ export default (state = DEFAULT_STATE, action) => {
 
     case ADD_VAPESHOP_ERRORS: {
       return {...state,
-      vapeshopErrors: action.payload}
+      vapeshopErrors:  action.payload}
     }
 
     case REMOVE_VAPESHOP_ERRORS: {

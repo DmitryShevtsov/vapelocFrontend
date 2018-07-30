@@ -44,9 +44,9 @@ class Authentication extends Component {
             Password:
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
           </label>
-          <input type="submit" value="Submit"/>
+          <button type="submit" className="button"><span>Submit</span></button>
         </form>
-        <button onClick={this.props.registrationModal}>Registration</button>
+        <button onClick={this.props.registrationModal} className="button">Registration*</button>
       </div>
 
     );

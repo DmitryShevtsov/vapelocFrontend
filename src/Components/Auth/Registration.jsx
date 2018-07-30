@@ -36,21 +36,22 @@ class Registration extends Component {
 
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label style={this.phoneLabel().style}>
-            Phone: {this.phoneLabel().errorType}
+          <label style={{color: 'red'}}>{this.props.user.errors.message}</label>
+          <label>
+            Phone:
             <input type="tel" name="phone" value={this.state.phone} onChange={this.handleChange}/>
           </label>
-          <label style={this.passwordLabel().style}>
-            Password:{this.passwordLabel().errorType}
+          <label>
+            Password:
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
           </label>
-          <label style={this.nameLabel().style}>
-            Name: {this.nameLabel().errorType}
+          <label>
+            Name:
             <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
           </label>
-          <input type="submit" value="Submit"/>
+          <button type="submit" className="button"><span>Submit</span></button>
         </form>
-        <button onClick={this.props.authenticationModal}>Authentication</button>
+        <button onClick={this.props.authenticationModal} className="button">Authentication</button>
       </div>
 
     );

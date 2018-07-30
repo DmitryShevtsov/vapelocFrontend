@@ -1,7 +1,10 @@
-import {OPEN_NEW_VAPESHOP_MODAL, CLOSE_NEW_VAPESHOP_MODAL, EDIT_VAPESHOP, OPEN_EDIT_VAPESHOP_MODAL,
-CLOSE_EDIT_VAPESHOP_MODAL} from "../Constants/modalsConstants";
+import {
+  OPEN_NEW_VAPESHOP_MODAL, CLOSE_NEW_VAPESHOP_MODAL, EDIT_VAPESHOP, OPEN_EDIT_VAPESHOP_MODAL,
+  CLOSE_EDIT_VAPESHOP_MODAL
+} from "../Constants/modalsConstants";
 import {URL} from "../Constants/urlsConstants";
-import {fetchVapeshops, addVapeshopErrors} from "./vapeshopActions";
+import {fetchVapeshops, addVapeshopErrors, removeVapeshopErrors, fetchSingleVapeshop} from "./vapeshopActions";
+import {ADD_NEW_MARKER, REMOVE_NEW_MARKER} from "../Constants/vapeshopsConstants";
 
 export function openNewVapeshopModal() {
   return {
@@ -15,12 +18,30 @@ export function closeNewVapeshopModal() {
   }
 }
 
-export function createVapeshop(vapeshop) {
+export function addNewMarker(payload) {
+  return {
+    type: ADD_NEW_MARKER,
+    payload: payload
+  }
+}
+
+export function removeNewMarker() {
+  return {
+    type: REMOVE_NEW_MARKER
+  }
+}
+
+export function createVapeshop(vapeshop, user_id) {
   return (dispatch) => {
-    let data = new FormData();
-    data.append('name', vapeshop.name);
-    data.append('description', vapeshop.description);
-    return fetch(`${URL}/vapeshops`, {method: 'POST', body: data}).then((response) => {
+    return fetch(`${URL}/vapeshops`, {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+        name: vapeshop.name,
+        description: vapeshop.description,
+        lat: vapeshop.lat,
+        lng: vapeshop.lng,
+        user_id: user_id
+      })
+    }).then((response) => {
       if (response.status === 201) {
         return response.json();
       }
@@ -30,7 +51,9 @@ export function createVapeshop(vapeshop) {
         });
       }
     }).then(() => {
-      fetchVapeshops();
+      dispatch(fetchVapeshops());
+      dispatch(removeVapeshopErrors());
+      dispatch(closeNewVapeshopModal());
     })
       .catch((error) => {
         Promise.resolve(error).then((value) => {
@@ -41,9 +64,33 @@ export function createVapeshop(vapeshop) {
 
 }
 
-export function editVapeshop() {
-  return {
-    type: EDIT_VAPESHOP
+export function editVapeshop(vapeshop) {
+  return (dispatch) => {
+    return fetch(`${URL}/vapeshops/${vapeshop.id}`, {
+      method: 'PUT', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        name: vapeshop.name,
+        description: vapeshop.description,
+        lat: vapeshop.lat,
+        lng: vapeshop.lng
+      })
+    }).then((res) => {
+      if (res.status === 200) {
+        dispatch(closeEditVapeshopModal());
+        dispatch(fetchSingleVapeshop(vapeshop.id));
+
+      }
+      else {
+        throw res.json().then((res) => {
+          return res;
+        })
+      }
+    })
+      .catch((err) => {
+        Promise.resolve(err).then((value) => {
+          dispatch(addVapeshopErrors(value));
+        });
+      });
   }
 }
 

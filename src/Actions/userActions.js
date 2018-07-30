@@ -30,10 +30,10 @@ export function addUserErrors(payload) {
 
 export function loginUser(user) {
   return (dispatch) => {
-    let data = new FormData();
-    data.append('user[phone]', user.phone);
-    data.append('user[password]', user.password);
-    return fetch(`${URL}/session`, {method: 'POST', body: data})
+    return fetch(`${URL}/session`, {method: 'POST',headers: {'Content-Type':'application/json'}, body: JSON.stringify({
+        phone: user.phone,
+        password: user.password
+      })})
       .then((response) => {
         if (response.status === 202) {
           return response.json();
@@ -58,12 +58,11 @@ export function loginUser(user) {
 
 export function registrateUser(user) {
   return (dispatch) => {
-    let data = new FormData();
-    data.append('phone', user.phone);
-    data.append('password', user.password);
-    data.append('username', user.username);
-    console.log(data);
-    return fetch(`${URL}/registration`, {method: 'POST', body: data})
+    return fetch(`${URL}/registration`, {method: 'POST',headers: {'Content-Type':'application/json'}, body: JSON.stringify({
+        phone: user.phone,
+        password: user.password,
+        username: user.username
+      })})
       .then((response) => {
         if (response.status === 201) {
           return response.json();

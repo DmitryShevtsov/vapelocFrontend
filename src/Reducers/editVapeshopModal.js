@@ -1,21 +1,11 @@
-import {EDIT_VAPESHOP, CLOSE_EDIT_VAPESHOP_MODAL, OPEN_EDIT_VAPESHOP_MODAL} from "../Constants/modalsConstants";
+import {CLOSE_EDIT_VAPESHOP_MODAL, OPEN_EDIT_VAPESHOP_MODAL} from "../Constants/modalsConstants";
 
 const DEFAULT_STATE = {
-  isOpen: false,
-  name: [],
-  description: []
-};
+  isOpen: false
+}
 
 export default function (state = DEFAULT_STATE, action) {
   switch (action.type) {
-
-    case EDIT_VAPESHOP: {
-      return {
-        ...state,
-        name: action.payload.name,
-        description: action.payload.description
-      }
-    }
 
     case OPEN_EDIT_VAPESHOP_MODAL: {
       return {
